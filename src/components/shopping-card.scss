@@ -1,0 +1,97 @@
+// дизайнер из меня так себе конечно
+
+$color-accent: #eb2b2b;
+$b: '.s-cards';
+
+#{$b} {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 30%));
+  grid-auto-flow: row;
+  margin-top: 2rem;
+  gap: 30px;
+
+  &[data-list="true"] {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__item {
+    animation: reveal 0.5s forwards;
+    opacity: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 3px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    align-items: center;
+    background-color: #f5f5f5;
+    padding: 20px;
+
+    #{$b}[data-list="true"] & {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    &__description {
+      text-align: center;
+    }
+
+    &__title {
+      font-size: 2rem;
+      text-transform: uppercase;
+      letter-spacing: -0.1em;
+    }
+
+    &__color {
+      color: #999;
+    }
+
+    &__img {
+      max-width: 100%;
+
+      #{$b}[data-list="true"] & {
+        max-height: 200px;
+      }
+    }
+
+    &__footer {
+      display: flex;
+      justify-content: space-between;
+      color: $color-accent;
+      width: 100%;
+    }
+
+    &__price {
+      font-size: 2rem;
+    }
+
+    &__btn {
+      background-color: transparent;
+      color: $color-accent;
+      border: 1px solid $color-accent;
+      border-radius: 100vw;
+      padding: 10px;
+      text-transform: uppercase;
+      font-weight: bold;
+      transition: 0.2s;
+
+      &:hover {
+        -webkit-box-shadow: 0px 2px 8px 0px rgba(34, 60, 80, 0.2);
+        -moz-box-shadow: 0px 2px 8px 0px rgba(34, 60, 80, 0.2);
+        box-shadow: 0px 2px 8px 0px rgba(34, 60, 80, 0.2);
+        transform: translateY(-1px);
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
